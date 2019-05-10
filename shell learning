@@ -1,0 +1,33 @@
+HISTTIMEFORMAT="%Y%m%d %H%M%S" 历史命令添加执行时间记录 可以添加到 /etc/profile 中永久生效 source /etc/profile
+chattr +a ~/.bash_history  增加权限a是对文件.bash_history 只有追加不能删除
+!!  执行上一条命令
+!n   执行第n条命令
+!echo  执行最近的一次echo命令
+安装插件bash-completion  具有参数补全的作用yum install bash-completion
+alias  别名命令  unalias 取消别名命令
+
+通配符 ：
+[
+*  表示任意字符不分几个
+？ 表示任意一个
+[0-9a-zA-Z]  表示范围只取中括号其中的一个或的意思
+{0,1,2,3,4,5,6,7}  其中的一个或的意思
+]
+输出和输入重定向：
+[ 
+command >file 把大于号前面的结果输出到文档中会覆盖
+command >>file 把前面的命令结果输出到文档但不会覆盖
+command 2>file  会把前面命令执行错误的信息输出到文档覆盖
+command 2>>file 会把前面命令执行错误的信息输出到文档不覆盖
+command &>file  相当于1>和2>的结合 正确和错误都输出也可以写成这样 command >file1 2> file2
+command < file 把文件中的内容输入到命令行中
+]
+管道符、作业控制
+[
+command | command |command |管道符的作用是把上一条命令的结果传递给下一条命令
+ctrl+z 暂停一个任务放到后台
+fg n 把第n个后台运行的任务调到前台
+jobs 查看后台运行的任务
+bg n 把第n个任务放在后台运行
+command & 把任务放到后台运行
+]
