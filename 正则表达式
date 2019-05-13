@@ -12,7 +12,13 @@ grep [-cinvABC] 'word' filename
 -C 同上，同时过滤出符合要求的行以及上下各行
 . 表是任意字符; * 表是零个或多个*号前面的字符; .*表是通配所有匹配; []表是一个范围; + 表示一个或多个+前面的字符 ;？表示零个或者一个？前面的字符;
 ]
-sed 只用
+sed 使用
 [
-sed 具有
+sed 具有grep 字符串查找功能
+sed '/root/'p /tmp/passwd   和grep 'root' /tmp/passwd 具有相同的效果只是没有颜色显示
+sed -n '2'p /tmp/passwd  打印passwd文件的第二行 sed 可以打印指定的行 sed -n '1,$' /tmp/passwd 打印passwd的所有行
+sed -e '1'p /tmp/passwd -e '/root/'p -n /tmp/passwd  这个同时执行多个匹配会打印出第一行并匹配打印出所有root行
+sed '1'd /tmp/passwd  删除passwd文件中的第一行 不是实际删除文件中的内容只是显示时过滤 sed -i '1'd /tmp/passwd  -i 这个参数才真正更改文档中的内容
+sed '1,10s/root/toor/g' /tmp/passwd  替换参数s  1,10指定范围 /root/toor/g 把root替换成toor g表示全局替换
+ 
 ]
