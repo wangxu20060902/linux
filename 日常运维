@@ -1,1 +1,38 @@
+监控系统状态
+【
+w 和 uptime查看系统负载
+cat /proc/cpuinfo 查看cpu的信息和核数
+vmstat 监控系统状态 用法vmstat 1 5 1表示1秒显示一次5显示5次  关键列：r,b,swpd,si,so,bi,bo,us,wa  r run b block si so是和swap有关，bi bo是和磁盘有关
+top 查看进程使用资源情况
+top -c 显示详细的进程信息
+top -bn1 静态显示所有进程
+q退出,数字1显示所有核cpu,大写字母M按照内存使用顺序,大写字母P按照cpu使用排序
 
+sar 监控命令 安装 yum install -y sysstat
+sar -n DEV 1 10 这个是查看网络信息的命令1表示每1秒输出一次 总共输出10次
+sar -n DEV -f /var/log/sa/sa** 查看某天的网络状态 sa** **代表某一天
+sar -q 1 10查看负载的
+sar -b 1 10查看磁盘的
+
+nload 网络监控命令 安装 yum install -y nload 前先安装yum install epel-release
+nload 查看网卡信息按左右键进行网卡切换
+
+磁盘监控
+iostat -x 查看磁盘使用状况 %util 百分比过大是磁盘性能太差
+iotop  使用前先安装 yum install -y iotop 
+
+内存查看命令
+free -h 在结果后加单位  数据处理过程 磁盘>>>内存的(cache)缓存>>>cpu处理  处理后 cpu>>>内存(buffer)缓冲>>>磁盘 
+总内存  total=free+used+buffer/cache  
+avaliable 包含free和buffer/cache 剩余部分
+内存查看主要是查看available的状况
+可以根据swap 的装态判断内存使用状况和是否内存溢出判断程序问题
+
+网络状态监控
+netstat 需要先安装 yum install -y net-tools
+netstat 查看网络状态
+netstat -lnp 查看监听端口
+netstat -an 查看系统的网络连接状态
+netstat -tnlp 只查看tcp的，不包含socket
+netstat -an|awk '/^tcp/ {++sta[$NF]} END {for(key in sta) print key, "\t",sta[key]}' tcp统计各个状态
+】
