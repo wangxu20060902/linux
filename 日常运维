@@ -35,4 +35,12 @@ netstat -lnp 查看监听端口
 netstat -an 查看系统的网络连接状态
 netstat -tnlp 只查看tcp的，不包含socket
 netstat -an|awk '/^tcp/ {++sta[$NF]} END {for(key in sta) print key, "\t",sta[key]}' tcp统计各个状态
+
+网络抓包工具
+tcpdump -nn 以数字显示 -i 指定网卡 port 指定端口  host 指定主机
+tcpdump -nn -nn表示以数字显示主机及端口  默认是以主机名显示
+tcpdump -nn -i ens33  指定网卡
+tcpdump -nn -i ens33 port 80   指定网卡和端口
+tcpdump -nn -i ens33 not port 22 and host 192.168.xxx.xxx
+tcpdump -nn -c 100 -w 1.cap
 】
