@@ -1,1 +1,16 @@
-
+安全知识
+查看selinux 的装态 getenforce   临时关闭selinux  setenforce=0  永久关闭 vim /etc/selinux/config  SELINUX=disabled
+iptables 安装 yum install -y iptables-services 安装之前先把firewalld 禁掉 systemctl stop firewalld;systemctl disable firewalld
+安装完毕 启动iptables ：systemctl enable iptables;systemctl start iptables
+iptables -nvL 查看iptables的默认规则
+firewalld 使用
+systemctl enable firewalld 设置开机启动 systemctl start firewalld 启动friewalld  systemctl status firewalld 查看firewalld是否启动
+firewalld 默认有9个zone  默认zone是public
+firewall-cmd --get-zones  查看所有zone
+firewall-cmd --get-default-zone 查看默认zone
+firewall-cmd --set-default-zone=work  设定默认zone 为work
+firewall-cmd --get-zone-of-interface=ens33 查看指定网卡
+firewall-cmd --zone=public --add-interface=lo  给指定网卡设置zone
+firewall-cmd --zone=dmz --change-interface=lo  针对网卡更改zone
+firewall-cmd --zone=dmz --remove-interface=lo  针对网卡删除zone
+firewall-cmd --get-active-zones   
