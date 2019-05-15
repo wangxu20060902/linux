@@ -37,10 +37,21 @@ netstat -tnlp 只查看tcp的，不包含socket
 netstat -an|awk '/^tcp/ {++sta[$NF]} END {for(key in sta) print key, "\t",sta[key]}' tcp统计各个状态
 
 网络抓包工具
+安装抓包工具yum install tcpdump -y
 tcpdump -nn 以数字显示 -i 指定网卡 port 指定端口  host 指定主机
 tcpdump -nn -nn表示以数字显示主机及端口  默认是以主机名显示
 tcpdump -nn -i ens33  指定网卡
 tcpdump -nn -i ens33 port 80   指定网卡和端口
-tcpdump -nn -i ens33 not port 22 and host 192.168.xxx.xxx
-tcpdump -nn -c 100 -w 1.cap
+tcpdump -nn -i ens33 not port 22 and host 192.168.xxx.xxx  制定主机和排除端口
+tcpdump -nn -c 100 -w /tmp/1.cap   -c 代表多少行 -w 制定保存路径 1.cap文件为网卡中拿到的数据包不能cat  读取文件可以 tcpdump -r /tmp/1.cap
+wireshark  的安装 yum install wireshark -y
+网络相关的知识
+ifconfig 查看网络信息 需要安装 yum install -y net-tools 
+ifconfig 查看网卡命令 ifup ens33 启动网卡 ifdown  关闭网卡
+mii-tool ens33 查看网卡ens33 有没有连接 
+ethtool ens33 也可以查看网卡是否连接
+更改主机名hostnamectl set-hostname  wangxu007  也可以更改 /etc/hostname 来更改
+DNS 配置文件在 /etc/resolv.conf可以临时更改DNS 网卡重启失效  更改DNS可以更改网卡配置文件更改
+/etc/hosts  和地址解析有关 
+查看selinux 的装态 getenforce   临时关闭selinux  setenforce=0  永久关闭 vim /etc/selinux/config  SELINUX=disabled
 】
