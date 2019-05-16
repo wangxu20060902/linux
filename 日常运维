@@ -53,5 +53,12 @@ ethtool ens33 也可以查看网卡是否连接
 更改主机名hostnamectl set-hostname  wangxu007  也可以更改 /etc/hostname 来更改
 DNS 配置文件在 /etc/resolv.conf可以临时更改DNS 网卡重启失效  更改DNS可以更改网卡配置文件更改
 /etc/hosts  和地址解析有关 
-查看selinux 的装态 getenforce   临时关闭selinux  setenforce=0  永久关闭 vim /etc/selinux/config  SELINUX=disabled
+
+定时任务
+crontab -e 编辑定时任务 *  *  *  *  * user-name  command to be executed   第一个*分钟 第二个*小时 第三个*表示天 第四个*表示月 第五个*表示星期 用户 执行的任务
+0 3 * * * /bin/bash /usr/local/sbin/123.sh >>/tmp/123.log 2>>/tmp/123.log  每天的凌晨三点执行123.sh 脚本 输出日志到/tmp/123.log
+分钟的范围0-59，时的范围0-23，日期范围0-31，月范围0-12 周范围1-6
+0 3 1-10 */2 2,5 	1-10 表示1-10号表示范围1-10号 */2 表示能被2整除 2,5 表示周二或周五 
+启动systemctl start crond  重启 systemctl restart crond 停止 systemctl stop crond 
+crontab -l 查看任务  crontab -r 删除任务  
 】
