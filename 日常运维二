@@ -1,0 +1,21 @@
+日常运维二
+linux 系统服务管理-systemd
+systemctl list-units --all --type=service   或者 systemctl list-unit-files
+几个常用的服务相关的命令
+systemctl enable crond  让服务开机启动
+systemctl disable crond  不让开机启动
+systemctl status crond  查看状态
+systemctl stop crond 停止服务
+systemctl start crond  启动服务
+systemctl restart crond 重启服务
+systemctl is-enabled crond 检查服务是否开机启动
+
+linux 文件同步工具-rsync(支持增量和远程同步)
+rsync -av /etc/passwd /tmp/1.txt 把etc下的passwd copy 到tmp下为1.txt
+rsync -av /tmp/1.txt 192.168.1.100:/tmp/2.txt 把1.txt copy到远程主机上为2.txt
+rsync 使用格式 
+rsync [OPTION] ..... SRC DEST
+rsync [OPTION] ..... SRC [user@]host:DEST
+rsync [OPTION] ..... [user@]host:SRC DEST
+rsync [OPTION] ..... SRC [user@]host::DEST
+rsync [OPTION] ..... [user@]host::SRC DEST
