@@ -19,3 +19,19 @@ rsync [OPTION] ..... SRC [user@]host:DEST
 rsync [OPTION] ..... [user@]host:SRC DEST
 rsync [OPTION] ..... SRC [user@]host::DEST
 rsync [OPTION] ..... [user@]host::SRC DEST
+
+linux 系统日志
+/var/log/messages  系统日志文件
+vim /etc/logrotate.conf   日志切割配置文件
+dmesg 可以查看硬件故障和错误保存在内存中  dmesg -c 清空日志
+/var/log/dmesg 日志 记录硬件信息的
+last命令，调用的文件是/var/log/wtmp  用来记录正确的登录用户信息 wtmp 为二进制文件不能cat
+lastb 登录失败的用户信息 调用的是 /var/log/btmp   btmp 为二进制文件不能cat
+/var/log/secure 登录安全日志
+
+screen 工具
+为了不让一个任务意外中断
+nohup  command &  把任务丢到后台运行
+screen 是一个虚拟中断  安装 yum install screen -y
+screen && command   ctrl+a+d 把command 放入后台 
+screen -ls 查看虚拟中断的列表  screen -r 对应id 进入中断
