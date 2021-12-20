@@ -1,0 +1,11 @@
+linux date 的用法
+date +%Y%m%d , date +%y%m%d,date +%F ##年月日 前者后者区别一个现实全部的一个显示后两位
+date +%H:%M:%S = date +%T  ###时间
+date +%s ##时间戳
+date -d "+1 day"  ##一天后
+date -d "-1 day"  ##一天前
+date -d "-1 month" ##一个月前
+date -d "-1 min"   ## 一分钟前
+date +%w， date +%W  ##星期和第多少周 
+date -d @时间戳    ###把时间戳转换成年月日秒
+date +%s -d "年月日时分秒"   ###把时间转换成时间戳
